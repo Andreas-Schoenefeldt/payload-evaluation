@@ -1,0 +1,41 @@
+meta {
+  name: List Media
+  type: graphql
+  seq: 4
+}
+
+post {
+  url: {{HOST}}/graphql
+  body: graphql
+  auth: none
+}
+
+body:graphql {
+  {
+    allMedia (limit: 5) {
+      docs {
+        id
+        focalX
+        focalY
+        sizes {
+          sc_550x550 {
+            url
+          }
+          sc_1100x1100 {
+            url
+          }
+        }
+      }
+      offset
+      page
+      totalPages
+    }
+  }
+}
+
+body:graphql:vars {
+  {
+    "email": "{{USER_EMAIL}}",
+      "password": "{{USER_PASSWORD}}"
+  }
+}

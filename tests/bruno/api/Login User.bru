@@ -1,0 +1,36 @@
+meta {
+  name: Login User
+  type: graphql
+  seq: 1
+}
+
+post {
+  url: {{HOST}}/graphql
+  body: graphql
+  auth: none
+}
+
+body:graphql {
+  mutation loginUser($email: String, $password: String) {
+    loginUser(
+  		email: $email
+  		password: $password
+    ) {
+      exp
+      token
+      user {
+        id
+        email
+        roles
+        name
+      }
+    }
+  }
+}
+
+body:graphql:vars {
+  {
+    "email": "{{USER_EMAIL}}",
+      "password": "{{USER_PASSWORD}}"
+  }
+}
