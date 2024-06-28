@@ -41,6 +41,7 @@ export const Pages: CollectionConfig = {
     {
       name: 'title',
       type: 'text',
+      localized: true,
       required: true,
     },
     {

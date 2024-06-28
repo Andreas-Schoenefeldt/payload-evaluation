@@ -31,8 +31,10 @@ export const Media: CollectionConfig = {
     {
       name: 'alt',
       type: 'text',
+      localized: true,
       required: true,
     },
+    /*
     {
       name: 'caption',
       type: 'richText',
@@ -42,5 +44,7 @@ export const Media: CollectionConfig = {
         },
       }),
     },
+
+     */
   ],
 }

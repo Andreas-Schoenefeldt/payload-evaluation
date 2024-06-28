@@ -1,0 +1,53 @@
+meta {
+  name: List Pages
+  type: graphql
+  seq: 5
+}
+
+post {
+  url: {{HOST}}/graphql
+  body: graphql
+  auth: none
+}
+
+body:graphql {
+  query Page($slug: String, $draft: Boolean) {
+      Pages(where: {slug: {like: $slug}}, limit: 1, draft: $draft, locale: de, fallbackLocale: en) {
+        docs {
+          id
+          title
+          slug
+          layout {
+            ...on Content {
+              blockType
+              invertBackground
+              columns {
+                size
+                richText
+                enableLink
+              }
+            }
+            ...on MediaBlock {
+              blockType
+              invertBackground
+              position
+              media {
+                url
+                sizes {
+                  sc_550x550 {url}
+                  sc_1100x1100 {url}
+                }
+              }
+            }
+          }
+        }
+    }
+  }
+}
+
+body:graphql:vars {
+  {
+    "slug": "home",
+    "isDraft": false
+  }
+}

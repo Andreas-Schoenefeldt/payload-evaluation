@@ -4,7 +4,8 @@ filename
 width
 height
 alt
-caption
+focalX
+focalY
 `
 
 export const MEDIA = `media {

@@ -27,5 +27,10 @@ export const MediaBlock: Block = {
       relationTo: 'media',
       required: true,
     },
+    {
+      name: 'caption',
+      type: 'text',
+      localized: true,
+    },
   ],
 }

@@ -1,6 +1,5 @@
 import { webpackBundler } from '@payloadcms/bundler-webpack'
 import { mongooseAdapter } from '@payloadcms/db-mongodb'
-import { payloadCloud } from '@payloadcms/plugin-cloud'
 import nestedDocs from '@payloadcms/plugin-nested-docs'
 import redirects from '@payloadcms/plugin-redirects'
 import seo from '@payloadcms/plugin-seo'
@@ -66,6 +65,11 @@ export default buildConfig({
   serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL,
   collections: [Pages, Posts, Projects, Media, Categories, Users, Comments],
   globals: [Settings, Header, Footer],
+  localization: {
+    locales: ['en', 'de'],
+    defaultLocale: 'en',
+    fallback: true,
+  },
   typescript: {
     outputFile: path.resolve(__dirname, 'payload-types.ts'),
   },
@@ -95,6 +99,5 @@ export default buildConfig({
       generateTitle,
       uploadsCollection: 'media',
     }),
-    payloadCloud(),
   ],
 })
